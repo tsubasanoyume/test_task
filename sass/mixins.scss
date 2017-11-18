@@ -1,0 +1,4 @@
+@mixin font($font-size: 30px) {
+  font-family: "OpenSans Bold", "Times New Roman", sans-serif;
+  font-size: $font-size;
+}

@@ -1,0 +1,23 @@
+.main-table {
+  width: 30%;
+  padding-right: 10px;
+}
+
+.main-table__data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main-table__header {
+  font-weight: bold;
+
+  background-color: lightblue;
+}
+
+.main-table__header th {
+  border: 1px solid #000;
+}
+
+.main-table__row:hover {
+  background-color: #e1e1e1;
+}

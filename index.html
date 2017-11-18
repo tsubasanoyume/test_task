@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Тестовое задание</title>
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+        integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+          integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+          crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+  <main class="main-page">
+    <div class="main-filter">
+      <label class="main-filter__label" for="filter-y">Y больше либо равен</label>
+      <input type="text" class="main-filter__field" name="filter-y" id="filter-y" />
+    </div>
+    <div class="main-data-view">
+      <div class="main-table">
+        <table class="main-table__data-table">
+          <tr class="main-table__header">
+            <th>lat</th>
+            <th>lng</th>
+            <th>x</th>
+            <th>y</th>
+          </tr>
+        </table>
+      </div>
+      <div class="main-visual-data-view">
+        <div class="main-map" id="map"></div>
+        <div class="main-chart"></div>
+      </div>
+    </div>
+    </main>
+
+    <script src="script/app.js"></script>
+</body>
+</html>

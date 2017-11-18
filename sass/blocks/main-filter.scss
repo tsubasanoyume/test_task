@@ -1,0 +1,9 @@
+.main-filter__label {
+  margin-right: 10px;
+}
+
+.main-filter__field {
+  @include font();
+
+  padding: 5px;
+}
