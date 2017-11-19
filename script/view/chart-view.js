@@ -4,7 +4,9 @@ export default class ChartView {
     this.data = this.model.getData();
   }
   // инициализация графика
-  init() {
+  init(data = this.data) {
+    d3.select('.main-chart').selectAll(`svg`).remove();
+
     const margin = {top: 20, right: 20, bottom: 30, left: 40},
       width = $(`.main-chart`).width() - margin.left - margin.right,
       height = $(`.main-chart`).height() - margin.top - margin.bottom,
@@ -18,9 +20,12 @@ export default class ChartView {
       .attr(`transform`,
         `translate(` + margin.left + `,` + margin.top + `)`);
 
+    // сортировка массива данных по x
+    data.sort(function(a, b) { return d3.ascending(a.x, b.x) });
+
     // отрисовка осей x и у
-    x.domain(this.data.map(function(d) { return d.x; }));
-    y.domain([0, d3.max(this.data, function(d) { return d.y; })]);
+    x.domain(data.map(function(d) {return d.x;}));
+    y.domain([0, d3.max(data, function(d) { return d.y; })]);
 
     svg.append(`g`)
       .attr(`transform`, `translate(0,` + height + `)`)
@@ -31,13 +36,28 @@ export default class ChartView {
 
     // отрисовка баров
     svg.selectAll(`.bar`)
-      .data(this.data)
+      .data(data)
       .enter().append(`rect`)
       .attr(`class`, `bar`)
       .attr(`x`, function(d) { return x(d.x); })
       .attr(`y`, function(d) { return y(d.y); })
       .attr(`width`, x.bandwidth())
+      .attr(`data-id`, function(d) { return `${d.x}, ${d.y}`; })
       .attr(`height`, function(d) { return height - y(d.y); });
+
+  }
+
+  highlightBar(data) {
+    const bars = $(`rect`);
+
+    bars.each((i, item) => {
+      const itemData = $(item).attr(`data-id`).split(`,`);
+      if (+itemData[0] === +data.x && +itemData[1] === +data.y) {
+        $(item).css(`fill`, `red`);
+      } else {
+        $(item).css(`fill`, `steelblue`);
+      }
+    })
   }
 
 }

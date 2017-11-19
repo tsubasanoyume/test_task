@@ -10,7 +10,6 @@ const server = require('browser-sync').create();
 const mqpacker = require('css-mqpacker');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
-const imagemin = require('gulp-imagemin');
 const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -44,15 +43,6 @@ gulp.task('scripts', function () {
     .pipe(rollup({}, 'iife'))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/script/'));
-});
-
-gulp.task('imagemin', ['copy'], function () {
-  return gulp.src('build/img/**/*.{jpg,png,gif}')
-    .pipe(imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true})
-    ]))
-    .pipe(gulp.dest('build/img'));
 });
 
 gulp.task('copy-html', function () {
@@ -100,4 +90,4 @@ gulp.task('assemble', ['clean'], function () {
   gulp.start('copy', 'style');
 });
 
-gulp.task('build', ['assemble', 'imagemin']);
+gulp.task('build', ['assemble']);

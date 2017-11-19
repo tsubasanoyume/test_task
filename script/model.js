@@ -6,9 +6,5 @@ export default class DataModel {
   getData() {
     return this.data;
   }
-
-  filterData() {
-
-  }
 }
 

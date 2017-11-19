@@ -7,3 +7,9 @@
 
   padding: 5px;
 }
+
+.main-filter__clear {
+  @include font();
+
+  padding: 5px;
+}
