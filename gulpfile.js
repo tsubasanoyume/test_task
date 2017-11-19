@@ -37,7 +37,7 @@ gulp.task('style', function () {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src('script/**/*.js')
+  return gulp.src('script/app.js')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(rollup({}, 'iife'))
@@ -54,7 +54,7 @@ gulp.task('copy-html', function () {
 gulp.task('copy', ['copy-html', 'scripts', 'style'], function () {
   return gulp.src([
     'fonts/**/*.{woff,woff2}',
-    'img/*.*'
+    'lib/*.*'
   ], {base: '.'})
     .pipe(gulp.dest('build'));
 });
